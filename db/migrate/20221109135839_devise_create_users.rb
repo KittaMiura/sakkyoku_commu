@@ -14,6 +14,16 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       ## Rememberable
       t.datetime :remember_created_at
 
+      #ユーザー名
+      t.string :user_name, null: false
+
+      #プロフィール
+      t.text :profile
+
+      # 退会フラグ
+      # true=>退会した、false=>退会していない
+      t.boolean :is_deleted, null: false, default: false
+
       ## Trackable
       # t.integer  :sign_in_count, default: 0, null: false
       # t.datetime :current_sign_in_at
