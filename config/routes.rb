@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'about' => 'users/homes#about'
 
   scope module: :users do
+    resources :users, only: [:show, :edit]
     resources :posts
   end
 
