@@ -7,5 +7,6 @@
   <p>タイトル：<%= post.title %></p>
   <p>説明：<%= post.introduction %></p>
   <p>ユーザーネーム：<%= post.user.user_name %></p>
+  <%= link_to "詳細", post_path(post) %>
 </div>
 <% end %>
