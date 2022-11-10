@@ -3,6 +3,13 @@ Rails.application.routes.draw do
   root :to => 'users/homes#top'
   get 'about' => 'users/homes#about'
 
+  scope module: :users do
+    resources :posts
+  end
+
+  namespace :admin do
+    root :to => "homes#top"
+  end
 
   # 管理者用
   # URL /admin/sign_in ...
