@@ -13,7 +13,7 @@
   <%= link_to post_path(post.id) do %>
     <%= image_tag post.get_image %>
   <% end %>
-  <p>投稿ユーザー画像：<%= image_tag post.user.get_profile_image %></p>
+  <p>投稿ユーザー画像：<%= image_tag post.user.get_profile_image, size: '50x50' %></p>
   <p>タイトル：<%= post.title %></p>
   <p>説明：<%= post.introduction %></p>
   <p>ユーザーネーム：<%= post.user.user_name %></p>

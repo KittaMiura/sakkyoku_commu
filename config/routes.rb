@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'about' => 'users/homes#about'
 
   scope module: :users do
-    resources :users, only: [:show, :edit, :update]
+    resources :users, only: [:index, :show, :edit, :update]
     # 退会確認画面
     get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
     # 論理削除用のルーティング
