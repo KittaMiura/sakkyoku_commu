@@ -1,6 +1,6 @@
 <h1>会員情報編集</h1>
 
-<%= form_with model:@user, local:true do |f| %>
+<%= form_with model: @user, local:true do |f| %>
   <div class="form-group">
     <%= f.label :user_name %>
     <%= f.text_field :user_namee %>
@@ -16,5 +16,10 @@
       <div class="form-group">
         <%= f.submit %>
       </div>
+
+  <%= link_to "退会", unsubscribe_path %>
+
 <% end %>
+
+
 

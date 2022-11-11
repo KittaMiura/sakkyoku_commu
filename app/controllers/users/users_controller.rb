@@ -21,9 +21,17 @@ class Users::UsersController < ApplicationController
       render :edit
     end
   end
-  
+
   def unsubscribe
-    @customer = current_customer
+    @user = current_user
+  end
+
+  def withdraw
+    # byebug
+    @user = current_user
+    @user.update(is_deleted: true)
+    reset_session
+    redirect_to root_path
   end
 
   private
