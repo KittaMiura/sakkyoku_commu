@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   get 'about' => 'users/homes#about'
 
   scope module: :users do
-    resources :users, only: [:show, :edit]
+    resources :users, only: [:show, :edit, :update]
+    get '/users/unsubscribe' => 'users#unsubscribe'
+    patch '/customers/withdraw' => 'customers#withdraw'
     resources :posts
   end
 
