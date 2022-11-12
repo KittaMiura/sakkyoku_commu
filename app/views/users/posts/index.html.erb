@@ -1,9 +1,12 @@
 <h1>投稿一覧</h1>
 
-<% @tag_list.each do |tag|%>
-  <%=tag.name %>
-  <%="(#{tag.posts.count})" %>
-<% end %>
+<p>
+  <!--タグリスト-->
+  <% @tag_list.each do |list|%>
+    <%=link_to list.name,search_tag_path(tag_id: list.id) %>
+    <%="(#{list.posts.count})" %>
+  <% end %>
+</p>
 
 <% @posts.each do |post| %>
 <div>
@@ -15,4 +18,7 @@
   <p>ユーザーネーム：<%= post.user.user_name %></p>
   <%= link_to "詳細", post_path(post) %>
 </div>
+
 <% end %>
+
+<%= paginate @posts %>

@@ -2,7 +2,7 @@ class Users::PostsController < ApplicationController
 
 
   def index
-    @posts = Post.all
+    @posts = Post.page(params[:page])
     @tag_list=Tag.all
   end
 
@@ -49,6 +49,13 @@ class Users::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
     redirect_to posts_path
+  end
+
+  def search_tag
+    #検索結果画面でもタグ一覧表示
+    @tag_list=Tag.all
+    @tag=Tag.find(params[:tag_id])
+    @posts=@tag.posts.page(params[:page]).per(10)
   end
 
   private
