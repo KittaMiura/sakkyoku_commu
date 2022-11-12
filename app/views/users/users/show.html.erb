@@ -16,6 +16,8 @@
   <p>投稿ユーザー画像：<%= image_tag post.user.get_profile_image, size: '50x50' %></p>
   <p>タイトル：<%= post.title %></p>
   <p>説明：<%= post.introduction %></p>
+  <p>タグ：<%= post.tags.map(&:name).join(', ') %></p>
   <p>ユーザーネーム：<%= post.user.user_name %></p>
+  <%= link_to "詳細", post_path(post) %>
 </div>
 <% end %>

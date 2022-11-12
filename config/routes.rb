@@ -5,12 +5,13 @@ Rails.application.routes.draw do
 
   scope module: :users do
     resources :users, only: [:index, :edit, :update]
-    get '/users/my_page' => 'users#show'
+    get '/users/:id/profile' => 'users#show', as: 'profile'
     # 退会確認画面
     get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
     # 論理削除用のルーティング
     patch '/users/:id/withdrawal' => 'users#withdrawal', as: 'withdrawal'
     resources :posts
+    get "search_tag"=>"posts#search_tag"
   end
 
   namespace :admin do
