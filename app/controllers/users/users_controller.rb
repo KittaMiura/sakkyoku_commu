@@ -1,5 +1,5 @@
 class Users::UsersController < ApplicationController
-  
+
   def index
     @users = User.all
     @user = current_user
@@ -14,14 +14,14 @@ class Users::UsersController < ApplicationController
     @user = User.find(params[:id])
     @posts = @user.posts
     if @user.id != current_user.id
-    redirect_to user_path(current_user.id)
+    redirect_to profile_path(current_user.id)
     end
   end
 
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to user_path(@user.id), notice: "You have updated user successfully."
+      redirect_to profile_path(@user.id), notice: "You have updated user successfully."
     else
       render :edit
     end
