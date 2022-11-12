@@ -2,7 +2,8 @@ class Users::PostsController < ApplicationController
 
 
   def index
-    @posts = Post.page(params[:page])
+                                      # ↓投稿を新しい順にしている
+    @posts = Post.where(status: :true).page(params[:page]).order(id: "DESC")
     @tag_list=Tag.all
   end
 
@@ -14,11 +15,12 @@ class Users::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id=current_user.id
     # 受け取った値を,で区切って配列にする
-    tag_list=params[:post][:name].split(',')
+    tag_list=params[:post][:name].delete(' ').delete('　').split(',')
     if @post.save
-      @post.save_tag(tag_list)
-      redirect_to posts_path(@post),notice:'投稿完了しました:)'
+      @post.save_post(tag_list)
+      redirect_to posts_path(@post),notice:'投稿完了しました。'
     else
+      notice:'投稿に失敗しました。'
       render:new
     end
   end
@@ -31,14 +33,14 @@ class Users::PostsController < ApplicationController
   def edit
     @post = Post.find(params[:id])
     # pluckはmapと同じ意味
-    @tag_list=@post.tags.pluck(:name).join(',')
+    @tag_list = @post.tags.pluck(:name).join(',')
   end
 
   def update
     @post = Post.find(params[:id])
-    tag_list=params[:post][:name].split(',')
+    tag_list = params[:post][:name].delete(' ').delete('　').split(',')
     if @post.update(post_params)
-      @post.save_tag(tag_list)
+      @post.save_post(tag_list)
       redirect_to post_path(@post), notice: "You have updated book successfully."
     else
       render "edit"
@@ -61,7 +63,7 @@ class Users::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :image, :introduction)
+    params.require(:post).permit(:title, :image, :introduction, :status)
   end
 
 end

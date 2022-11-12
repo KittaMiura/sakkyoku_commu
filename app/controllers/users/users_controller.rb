@@ -7,7 +7,12 @@ class Users::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts
+    @posts = @user.posts.where(status: :true).page(params[:page]).order(id: "DESC")
+  end
+
+  def confirm
+    @user = User.find(params[:id])
+    @posts = @user.posts.where(status: false).order(id: "DESC").page(params[:page]).per(20)
   end
 
   def edit

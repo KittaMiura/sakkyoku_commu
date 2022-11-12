@@ -13,5 +13,17 @@
       <%= f.text_field :name, value: @tag_list %>
     </div>
 
+    <div class="form-group row">
+      <%=f.label:"公開範囲",class:"col-sm-4"%>
+        <div style="padding-right:20px;">
+          <%= f.radio_button :status, :true %>
+          <%= f.label :status, "公開", {value: :true, style: "display: inline-block;"} %>
+        </div>
+        <div style="padding-right:20px;">
+          <%= f.radio_button :status, :false %>
+          <%= f.label :status, "下書き保存", {value: :false, style: "display: inline-block;"} %>
+        </div>
+    </div>
+
     <%= f.submit '更新' %>
 <% end %>

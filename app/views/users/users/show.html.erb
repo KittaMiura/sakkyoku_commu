@@ -5,6 +5,7 @@
   <%= image_tag @user.get_profile_image, size: '50x50' %>
   <% if @user == current_user %>
     <%= link_to "編集", edit_user_path(@user) %>
+    <%=link_to "下書き一覧", confirm_user_path(@user)%>
   <% end %>
 </div>
 
@@ -21,3 +22,5 @@
   <%= link_to "詳細", post_path(post) %>
 </div>
 <% end %>
+
+<%= paginate @posts %>

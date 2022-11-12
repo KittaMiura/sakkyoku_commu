@@ -6,6 +6,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.text :introduction, null: false
       t.integer :user_id
       t.integer :post_tag_id
+      t.boolean :status, default: true
 
       t.timestamps
     end

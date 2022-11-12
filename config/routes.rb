@@ -4,14 +4,21 @@ Rails.application.routes.draw do
   get 'about' => 'users/homes#about'
 
   scope module: :users do
-    resources :users, only: [:index, :edit, :update]
+    resources :users, only: [:index, :edit, :update] do
+      member do
+        get :favorites
+        get :confirm
+      end
+    end
+    # ユーザー詳細画面のルーティング
     get '/users/:id/profile' => 'users#show', as: 'profile'
-    # 退会確認画面
+    # 退会確認画面のルーティング
     get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
     # 論理削除用のルーティング
     patch '/users/:id/withdrawal' => 'users#withdrawal', as: 'withdrawal'
     resources :posts
     get "search_tag"=>"posts#search_tag"
+    # 下書きのbooleanのルーティング
   end
 
   namespace :admin do
