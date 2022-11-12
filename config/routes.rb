@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     patch '/users/:id/withdrawal' => 'users#withdrawal', as: 'withdrawal'
     resources :posts do
       resources :post_comments, only: [:create, :destroy]
+      resource :favorites, only: [:create, :destroy]
     end
     # タグ検索機能のルーティング
     get "search_tag"=>"posts#search_tag"
