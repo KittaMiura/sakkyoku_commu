@@ -7,8 +7,8 @@
 
 <% @posts.each do |post| %>
 <div>
-  <%= image_tag post.get_image, size: '100x100' %>
-  <p>投稿ユーザー画像：<%= image_tag 'no_image.jpg', size: '50x50' %></p>
+  <%= image_tag post.get_image, size: '160x100' %>
+  <p>投稿ユーザー画像：<%= image_tag post.user.get_profile_image, size: '50x50' %></p>
   <p>タイトル：<%= post.title %></p>
   <p>説明：<%= post.introduction %></p>
   <p>タグ：<%= post.tags.map(&:name).join(', ') %></p>

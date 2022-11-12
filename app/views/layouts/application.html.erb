@@ -34,6 +34,12 @@
         <%= link_to '投稿一覧', posts_path %>
       </li>
       <li>
+        <%= link_to '会員一覧', users_path %>
+      </li>
+      <li>
+        <%= link_to 'マイページ', profile_path(current_user) %>
+      </li>
+      <li>
         <%= link_to "アバウト", about_path %>
       </li>
       <li>
