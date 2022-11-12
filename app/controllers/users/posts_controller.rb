@@ -3,6 +3,7 @@ class Users::PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    @tag_list=Tag.all
   end
 
   def new
@@ -24,15 +25,20 @@ class Users::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @post_tags = @post.tags
   end
 
   def edit
     @post = Post.find(params[:id])
+    # pluckはmapと同じ意味
+    @tag_list=@post.tags.pluck(:name).join(',')
   end
 
   def update
     @post = Post.find(params[:id])
+    tag_list=params[:post][:name].split(',')
     if @post.update(post_params)
+      @post.save_tag(tag_list)
       redirect_to post_path(@post), notice: "You have updated book successfully."
     else
       render "edit"

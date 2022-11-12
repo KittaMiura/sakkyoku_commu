@@ -7,5 +7,11 @@
       <%= f.text_field :title %>
     <h4>説明文</h4>
       <%= f.text_area :introduction %>
+
+    <div class="field">
+      <%= f.label"タグ (,で区切ると複数タグ登録できます)" %><br>
+      <%= f.text_field :name, value: @tag_list %>
+    </div>
+
     <%= f.submit '更新' %>
 <% end %>
