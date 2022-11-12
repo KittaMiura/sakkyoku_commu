@@ -16,7 +16,9 @@ Rails.application.routes.draw do
     get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
     # 論理削除用のルーティング
     patch '/users/:id/withdrawal' => 'users#withdrawal', as: 'withdrawal'
-    resources :posts
+    resources :posts do
+      resources :post_comments, only: [:create]
+    end
     # タグ検索機能のルーティング
     get "search_tag"=>"posts#search_tag"
     # ワード検索のルーティング
