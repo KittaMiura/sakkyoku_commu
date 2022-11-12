@@ -17,8 +17,10 @@ Rails.application.routes.draw do
     # 論理削除用のルーティング
     patch '/users/:id/withdrawal' => 'users#withdrawal', as: 'withdrawal'
     resources :posts
+    # タグ検索機能のルーティング
     get "search_tag"=>"posts#search_tag"
-    # 下書きのbooleanのルーティング
+    # ワード検索のルーティング
+    get "search" => "searches#search"
   end
 
   namespace :admin do
