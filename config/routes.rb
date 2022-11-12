@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     # 論理削除用のルーティング
     patch '/users/:id/withdrawal' => 'users#withdrawal', as: 'withdrawal'
     resources :posts do
-      resources :post_comments, only: [:create]
+      resources :post_comments, only: [:create, :destroy]
     end
     # タグ検索機能のルーティング
     get "search_tag"=>"posts#search_tag"
