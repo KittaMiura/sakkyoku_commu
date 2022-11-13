@@ -30,7 +30,7 @@ class Admin::TagsController < ApplicationController
 
   private
 
-  def genre_params
+  def tag_params
     params.require(:tag).permit(:name)
   end
 

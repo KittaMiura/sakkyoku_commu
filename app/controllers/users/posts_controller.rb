@@ -42,7 +42,7 @@ class Users::PostsController < ApplicationController
     tag_list = params[:post][:name].delete(' ').delete('　').split(',')
     if @post.update(post_params)
       @post.save_post(tag_list)
-      redirect_to post_path(@post), notice: "You have updated book successfully."
+      redirect_to post_path(@post)
     else
       render "edit"
     end

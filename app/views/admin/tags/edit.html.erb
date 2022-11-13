@@ -1,0 +1,14 @@
+<div class="container">
+  <h5 class="col-md-7 mb-5 mt-5">
+    <span class="py-2 px-4 bg-ligh alert-secondary">タグ編集</span>
+  </h5>
+  <div class="row mt-5">
+    <%= form_with model: @tag,url:admin_tag_path,local:true do |f| %>
+      <div>
+        <span class="mr-5">タグ名</span>
+        <%= f.text_field :name %>
+        <%= f.submit "変更を保存", class: "ml-5 btn btn-success" %>
+      </div>
+    <% end %>
+  </div>
+</div>
