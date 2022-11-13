@@ -14,7 +14,7 @@
               管理者アカウントでログイン中
             </li>
             <li class='mx-1'>
-              <%= link_to admin_items_path,class: 'btn btn-outline-light' do %>Home<% end %>
+              <%= link_to admin_root_path,class: 'btn btn-outline-light' do %>Home<% end %>
             </li>
             <li class='mx-1'>
               <%= link_to admin_users_path,class: 'btn btn-outline-light' do %>会員一覧<% end %>
@@ -32,7 +32,7 @@
             <li class="my-auto pr-5 mr-5 text-light">
               管理者アカウントでログイン中
             <li class='mx-1'>
-              <%= link_to admin_items_path,class: 'btn btn-outline-light' do %>Home<% end %>
+              <%= link_to admin_root_path,class: 'btn btn-outline-light' do %>Home<% end %>
             </li>
             <li class='mx-1'>
               <%=  link_to admin_posts_path,class: 'btn btn-outline-light' do %>投稿一覧<% end %>
@@ -81,6 +81,9 @@
           </li>
           <li class='mx-1'>
             <%= link_to new_user_session_path ,class: 'btn btn-outline-light' do %>ログイン<% end %>
+          </li>
+          <li class='mx-1'>
+            <%= link_to new_admin_session_path ,class: 'btn btn-outline-light' do %>管理者ログイン<% end %>
           </li>
         <% end %>
 
