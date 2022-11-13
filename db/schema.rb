@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2022_11_12_185359) do
     t.text "comment"
     t.integer "user_id"
     t.integer "post_id"
+    t.boolean "is_ban", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

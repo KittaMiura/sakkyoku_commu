@@ -17,7 +17,7 @@
   <p>説明：<%= post.introduction %></p>
   <p>タグ：<%= post.tags.map(&:name).join(', ') %></p>
   <p>ユーザーネーム：<%= post.user.user_name %></p>
-  <p><%= link_to "#{post.post_comments.count} コメント", post_path(post.id) %></p>
+  <p><%= link_to "#{post.post_comments.count} コメント", admin_post_path(post) %></p>
   <%= link_to "詳細", admin_post_path(post) %>
 </div>
 

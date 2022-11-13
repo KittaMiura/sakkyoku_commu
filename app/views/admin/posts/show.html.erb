@@ -42,10 +42,3 @@
     <%= link_to "非公開設定", edit_admin_post_path(@post) %>
   <% end %>
 
-  <div>
-    <%= form_with model: [@post, @post_comment] do |f| %>
-      <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-      <%= f.submit "送信する" %>
-    <% end %>
-  </div>
-

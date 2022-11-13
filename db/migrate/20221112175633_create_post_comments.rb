@@ -4,6 +4,7 @@ class CreatePostComments < ActiveRecord::Migration[6.1]
       t.text :comment
       t.integer :user_id
       t.integer :post_id
+      t.boolean :is_ban, default: false
 
       t.timestamps
     end
