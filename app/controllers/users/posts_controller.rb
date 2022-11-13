@@ -2,7 +2,7 @@ class Users::PostsController < ApplicationController
 
 
   def index
-                                      # ↓投稿を新しい順にしている
+                                                             # ↓投稿を新しい順にしている
     @posts = Post.where(status: :true).page(params[:page]).order(id: "DESC")
     @tag_list=Tag.all
   end

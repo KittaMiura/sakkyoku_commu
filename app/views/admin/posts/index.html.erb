@@ -1,0 +1,26 @@
+<h1>投稿一覧</h1>
+
+<p>
+  <!--タグリスト-->
+  タグ一覧：
+  <% @tag_list.each do |list|%>
+    <%=link_to list.name,search_tag_path(tag_id: list.id) %>
+    <%="(#{list.posts.count})" %>
+  <% end %>
+</p>
+
+<% @posts.each do |post| %>
+<div>
+  <%= image_tag post.get_image, size: '160x100' %>
+  <p>投稿ユーザー画像：<%= image_tag post.user.get_profile_image, size: '50x50' %></p>
+  <p>タイトル：<%= post.title %></p>
+  <p>説明：<%= post.introduction %></p>
+  <p>タグ：<%= post.tags.map(&:name).join(', ') %></p>
+  <p>ユーザーネーム：<%= post.user.user_name %></p>
+  <p><%= link_to "#{post.post_comments.count} コメント", post_path(post.id) %></p>
+  <%= link_to "詳細", admin_post_path(post) %>
+</div>
+
+<% end %>
+
+<%= paginate @posts %>

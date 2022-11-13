@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     root :to => "homes#top"
     resources :users, only: [:index, :show, :edit, :update]
     resources :tags, only: [:index, :create, :edit, :update]
+    resources :posts, only: [:index, :show, :edit, :update]
   end
 
   # 管理者用
