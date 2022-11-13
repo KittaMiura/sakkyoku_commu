@@ -18,9 +18,9 @@ class Admin::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  #今は管理者ログイン後にトップページに飛ばしているけど、あとで管理者トップページに飛ばすようにする
+  # 管理者トップへ
   def after_sign_in_path_for(resource)
-    root_path
+    admin_root_path
   end
 
   #管理者ログアウト後は管理者ログイン画面へ飛ぶ

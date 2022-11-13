@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root :to => "homes#top"
     resources :users, only: [:index, :show, :edit, :update]
+    resources :tags, only: [:index, :create, :edit, :update]
   end
 
   # 管理者用

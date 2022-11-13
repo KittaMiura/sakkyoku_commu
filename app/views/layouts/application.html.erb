@@ -13,20 +13,29 @@
   <body>
 
     <header>
-      <li>
-        <%= link_to "TOP", root_path %>
-      </li>
     <% if admin_signed_in? %>
       <li>
         <span>管理者アカウントでログイン中</span>
       </li>
       <li>
+        <%= link_to "TOP", root_path %>
+      </li>
+      <li>
         <%= link_to "アバウト", about_path %>
+      </li>
+      <li>
+        <%= link_to "会員一覧", admin_users_path %>
+      </li>
+      <li>
+        <%= link_to "タグ一覧", admin_tags_path %>
       </li>
       <li>
         <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
       </li>
     <% elsif user_signed_in? %>
+      <li>
+        <%= link_to "TOP", root_path %>
+      </li>
       <li>
         <%= link_to '投稿フォーム', new_post_path %>
       </li>
@@ -46,6 +55,9 @@
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
       </li>
     <% else %>
+      <li>
+        <%= link_to "TOP", root_path %>
+      </li>
       <li>
         <%= link_to "アバウト", about_path %>
       </li>

@@ -1,0 +1,44 @@
+<div class="container">
+  <h5 class="col-md-7 mb-5 mt-5">
+      <span class="px-3 ml-5 bg-ligh alert-secondary">タグ一覧・追加</span>
+    </h5>
+
+    <div class="row">
+      <div class="col-10">
+      <%= form_with url: admin_tags_path, model: @tag, local: true do |f| %>
+
+        <table class="tab">
+          <td><strong><%= f.label :name, 'タグ名', class: "mr-5" %></strong></td>
+          <td><%= f.text_field :name, class: 'form-control' %></td>
+          <td><%= f.submit '新規登録', class: 'btn btn-success ml-5' %></td>
+        </table>
+       <% end %>
+    </div>
+    </div>
+    <div class="row">
+      <div  class="col-5">
+        <table class="table table-hover table-inverse  mt-5" >
+        <thead class="thead-light">
+            <th>タグ名</th>
+            <th>件数</th>
+            <th></th>
+          </thead>
+          <tbody>
+            <% @tags.each do |tag| %>
+            <tr>
+              <td><%= tag.name %></td>
+              <td><%= tag.posts.count %></td>
+              <td align="center">
+                <%= link_to "編集する",edit_admin_tag_path(tag), class: "btn btn-success" %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    </div>
+  </div>
+</div>

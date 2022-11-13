@@ -37,11 +37,16 @@ class Users::UsersController < ApplicationController
   end
 
   def withdraw
-    # byebug
     @user = current_user
     @user.update(is_deleted: true)
     reset_session
     redirect_to root_path
+  end
+  
+  def favorites
+    @user = User.find(params[:id])
+    favorites= Favorite.where(user_id: @user.id).pluck(:post_id)
+    @favorite_posts = Post.find(favorites)
   end
 
   private
