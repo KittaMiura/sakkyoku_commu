@@ -24,6 +24,8 @@ Rails.application.routes.draw do
     get "search_tag"=>"posts#search_tag"
     # ワード検索のルーティング
     get "search" => "searches#search"
+    # グループ機能のルーティング
+    resources :groups, except: [:destroy]
   end
 
   namespace :admin do
