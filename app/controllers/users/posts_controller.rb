@@ -18,7 +18,7 @@ class Users::PostsController < ApplicationController
     tag_list=params[:post][:name].delete(' ').delete('　').split(',')
     if @post.save
       @post.save_post(tag_list)
-      redirect_to posts_path(@post),notice:'投稿完了しました。'
+      redirect_to post_path(@post),notice:'投稿完了しました。'
     else
       notice:'投稿に失敗しました。'
       render:new

@@ -1,0 +1,27 @@
+<div class='container my-5 py-5'>
+  <div class='row pt-5 justify-content-center'>
+    <h3 class='font-weight-bold'>本当に非公開にしますか？</h3>
+  </div>
+  <div class='row pt-5 pb-5 justify-content-center'>
+      <h4 class='text-center'>
+        非公開にすると、</br>
+        投稿内容が管理者以外の<br>
+        どのユーザーからも見れない状態になります。</br>
+      </h4>
+  </div>
+  <div class='row justify-content-center'>
+    <%= form_with model: @post, url: admin_post_path do |f| %>
+      <div style="padding-right:20px;">
+        <%= f.radio_button :is_ban, :true %>
+        <%= f.label :is_ban, "非公開にする", {value: :true, style: "display: inline-block;"} %>
+      </div>
+      <div style="padding-right:20px;">
+        <%= f.radio_button :is_ban, :false %>
+        <%= f.label :is_ban, "非公開にしない", {value: :false, style: "display: inline-block;"} %>
+      </div>
+      <%#= link_to "非公開にしない", customers_my_page_path(@cutomer), class: 'col-md-2 mx-2 btn btn-primary' %>
+      <%#= link_to "退会する",  customers_withdraw_path(@cutomer), method: :patch, class: 'col-md-2 mx-2 btn btn-danger' %>
+      <%= f.submit '更新' %>
+    <% end %>
+  </div>
+</div>

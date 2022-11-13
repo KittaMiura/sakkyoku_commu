@@ -1,5 +1,9 @@
 <h1>投稿詳細</h1>
 
+<% if @post.is_ban? %>
+  <h3>この投稿は非公開になっています</h3>
+<% else %>
+
 <div>
   <%= image_tag @post.get_image, size: '260x200' %>
   <p>ショップ名：<%= @post.title %></p>
@@ -52,4 +56,6 @@
       <%= f.submit "送信する" %>
     <% end %>
   </div>
+  
+<% end %>
 
