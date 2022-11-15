@@ -9,6 +9,10 @@ Rails.application.routes.draw do
         get :favorites
         get :confirm
       end
+      # フォロー機能のルーティング
+      resource :relationships, only: [:create, :destroy]
+      get 'followings' => 'relationships#followings', as: 'followings'
+      get 'followers' => 'relationships#followers', as: 'followers'
     end
     # ユーザー詳細画面のルーティング
     get '/users/:id/profile' => 'users#show', as: 'profile'
@@ -26,6 +30,7 @@ Rails.application.routes.draw do
     get "search" => "searches#search"
     # グループ機能のルーティング
     resources :groups, except: [:destroy]
+
   end
 
   namespace :admin do
