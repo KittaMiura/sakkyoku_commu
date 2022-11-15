@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
- 
+
 header {
   position: sticky;
   top: 0;
@@ -21,7 +21,19 @@ header {
   background: linear-gradient(to bottom right, #b31247, 50%, #660066);
 }
 
+footer {
+  /*position: sticky;*/
+  /*top: 0;*/
+  /*z-index: 999;*/
+  height: 77px;
+  background: linear-gradient(to bottom right, #b31247, 50%, #660066);
+  /*text-align: center;*/
+}
+
 .search_form {
   width: 580px;
 }
 
+.sakkyoku_commu {
+  text-align: center;
+}
