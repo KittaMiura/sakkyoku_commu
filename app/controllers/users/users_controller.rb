@@ -42,7 +42,7 @@ class Users::UsersController < ApplicationController
     reset_session
     redirect_to root_path
   end
-  
+
   def favorites
     @user = User.find(params[:id])
     favorites= Favorite.where(user_id: @user.id).pluck(:post_id)
@@ -52,7 +52,7 @@ class Users::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:user_name, :introduction, :profile_image)
+    params.require(:user).permit(:user_name, :profile, :profile_image)
   end
 
 end

@@ -1,26 +1,23 @@
-<table class='table'>
-  <tr><%= image_tag user.get_profile_image, size:'100x100' %></tr>
-  <tr>
-	  <th>name</th>
-	  <th><%= user.user_name %></th>
-  </tr>
-  <tr>
-	  <th>introduction</th>
-	  <th><%= user.profile %></th>
-  </tr>
-  <tr>
-	  <th>follows</th>
-	  <th>
-	    <%= @user.followings.count %>
-	  </th>
-	<tr>
-	    <th>followers</th>
-	    <th>
-	      <%= @user.followers.count %>
-	    </th>
-  </tr>
+<table class='table table-active mt-2' style="table-layout:fixed;width:100%;">
+	<div class="text-center">
+		<h2>User info</h2>
+		<%= image_tag user.get_profile_image, size:'150x150' %>
+	</div>
+	<colgroup>
+    <col style="width:33%;">
+    <col style="width:67%;">
+  </colgroup>
+  <thead>
+  	<th class="col-xs-2">name</th><th class="col-xs-2"><%= user.user_name %></th>
+  </thead>
+  <tbody>
+    <tr><th>profile</th><td style="word-wrap:break-word;"><%= user.profile %></td></tr>
+    <tr><th>follows</th><td><%= user.followings.count %></td></tr>
+    <tr><th>followers</th><td><%= user.followers.count %></td></tr>
+  </tbody>
 </table>
 
-	<%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block" do %>
+	<!--会員編集ボタン-->
+	<%= link_to edit_user_path(user), class: "col-8 btn btn-outline-secondary btn-block mx-auto" do %>
     <i class="fas fa-user-cog"></i>
   <% end %>
