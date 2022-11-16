@@ -5,6 +5,16 @@
       <%= render 'info', user: @user %>
 
       <div class='mt-3 text-center'>
+        <% if current_user == @user %>
+        	<!--会員編集ボタン-->
+        	<%= link_to edit_user_path(@user), class: "col-8 btn btn-outline-secondary btn-block mx-auto" do %>
+            <i class="fas fa-user-cog"></i> ユーザー編集
+          <% end %>
+          <%= link_to groups_path, class: "col-8 btn btn-outline-secondary btn-block mx-auto" do %>
+            <i class="fas fa-users"></i> グループ一覧
+          <% end %>
+        <% end %>
+
         <% if current_user != @user %>
           <% if current_user.following?(@user) %>
             <%= link_to 'フォローを外す', user_relationships_path(@user.id), method: :delete, class: "col-8 btn btn-danger" %>
@@ -13,17 +23,7 @@
           <% end %>
         <% end %>
       </div>
-
-  <!--    <h2 class="mt-3">New book</h2>-->
-  <!--    <%#= render 'books/form', book: @book %>-->
-  <!--  </div>-->
-  <!--  <div class='col-md-8 offset-md-1'>-->
-
-  <!--    <h2>Books</h2>-->
-  <!--    <%#= render 'books/index',books: @books %>-->
-  <!--  </div>-->
-  <!--</div>-->
-</div>
+    </div>
 
 <div class='col-md-9'>
   <div class="card-list-container py-3">

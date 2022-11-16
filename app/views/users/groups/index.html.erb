@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mx-auto mt-5">
+              <h2>Groups</h2>
+              <table class='table table-hover table-inverse'>
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>グループ名</th>
+                    <th>紹介文</th>
+                    <th colspan="3"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @groups.each do |group| %>
+                    <tr>
+                      <td><%= image_tag group.get_group_image, size: '100x100' %></td>
+                      <td><%= link_to group.name, group_path(group) %></td>
+                      <td><%= group.introduction %></td>
+                      <td></td>
+                      <td>
+                        <% if group.owner_id == current_user.id %>
+                          <%= link_to 'Edit', edit_group_path(group), class: "btn btn-sm btn-success" %>
+                        <% end %>
+                      </td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            <%= link_to new_group_path, class: "col-8 btn btn-outline-secondary btn-block mx-auto" do %>
+                <i class="fas fa-user-cog"></i> グループ作成
+            <% end %>
+        </div>
+    </div>
+</div>

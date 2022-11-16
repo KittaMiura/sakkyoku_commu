@@ -29,8 +29,9 @@ Rails.application.routes.draw do
     # ワード検索のルーティング
     get "search" => "searches#search"
     # グループ機能のルーティング
-    resources :groups, except: [:destroy]
-
+    resources :groups do
+      get "join" => "groups#join"
+    end
   end
 
   namespace :admin do

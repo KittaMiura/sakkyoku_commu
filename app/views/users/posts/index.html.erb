@@ -18,10 +18,14 @@
         <div class="pt-3 card-body">
           <div class="row">
             <div class="col-1"><!--投稿ユーザー画像-->
-              <%= image_tag post.user.get_profile_image, size: '50x50', class:"rounded-circle" %>
+              <%= link_to profile_path(post.user.id) do %>
+                <%= image_tag post.user.get_profile_image, size: '50x50', class:"rounded-circle" %>
+              <% end %>
             </div>
             <div class="col-11">
-              <span><i class="fas fa-user"></i> By <%= post.user.user_name %></span><br>
+              <%= link_to profile_path(post.user.id), class:"text-dark" do %>
+                <span><i class="fas fa-user"></i> <%= post.user.user_name %></span><br>
+              <% end %>
               <small>
                 <%= post.created_at.strftime('%Y年%m月%d日 %H:%M:%S') %>
               </small>
