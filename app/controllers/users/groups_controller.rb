@@ -14,7 +14,7 @@ class Users::GroupsController < ApplicationController
   def join
     @group = Group.find(params[:group_id])
     @group.users << current_user
-    redirect_to groups_path
+    redirect_to group_path(@group.id)
   end
 
   def new
@@ -26,7 +26,7 @@ class Users::GroupsController < ApplicationController
     @group.owner_id = current_user.id
     @group.users << current_user
     if @group.save
-      redirect_to groups_path
+      redirect_to group_path
     else
       render 'new'
     end
@@ -47,7 +47,7 @@ class Users::GroupsController < ApplicationController
     @group = Group.find(params[:id])
     #current_userは、@group.usersから消されるという記述。
     @group.users.delete(current_user)
-    redirect_to groups_path
+    redirect_to group_path(@group.id)
   end
 
   private
