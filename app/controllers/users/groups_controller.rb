@@ -33,9 +33,11 @@ class Users::GroupsController < ApplicationController
   end
 
   def edit
+    @group=Group.find(params[:id])
   end
 
   def update
+    @group=Group.find(params[:id])
     if @group.update(group_params)
       redirect_to groups_path
     else
@@ -48,6 +50,13 @@ class Users::GroupsController < ApplicationController
     #current_userは、@group.usersから消されるという記述。
     @group.users.delete(current_user)
     redirect_to group_path(@group.id)
+  end
+
+  def all_destroy
+    @group = Group.find(params[:group_id])
+    if @group.destroy
+    redirect_to groups_path
+    end
   end
 
   private

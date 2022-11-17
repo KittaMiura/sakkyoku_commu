@@ -1,22 +1,31 @@
 <div class='container px-5 px-sm-0'>
   <div class='row'>
-    <div class='col-md-8 offset-md-1 mx-auto'>
+    <div class='col-md-11 offset-md-1 mx-auto'>
       <h2>Group Detail</h2>
       <table class='table table-hover table-inverse'>
+        <colgroup>
+          <col style="width:10%;">
+          <col style="width:15%;">
+          <col style="width:25%;">
+          <col style="width:15%;">
+          <col style="width:15%;">
+          <col style="width:15%;">
+        </colgroup>
         <thead>
           <tr>
             <th></th>
             <th>グループ名</th>
             <th>紹介文</th>
             <th>メンバー</th>
-            <th class="col-md-4"></th>
+            <th></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
           <tr>
           <td><%= image_tag @group.get_group_image, size: '100x100' %></td>
           <td><%= @group.name %></td>
-          <td><%= @group.introduction %></td>
+          <td style="white-space: normal;"><%= @group.introduction %></td>
           <td>
               <% @group.users.each do |member| %>
                 ・<%= member.user_name %><br>
@@ -29,6 +38,11 @@
               <%= link_to 'Leave this group', group_path(@group), method: :delete, class: "btn btn-sm btn-danger" %>
             <% else %>
               <%= link_to 'Join this group', group_join_path(@group), class: "btn btn-sm btn-success" %>
+            <% end %>
+          </td>
+          <td>
+            <% if @group.owner_id == current_user.id %>
+             <%= link_to '削除',group_all_destroy_path(@group), method: :delete,data: { confirm: '本当に削除しますか？' } , class: "btn btn-sm btn-outline-danger" %>
             <% end %>
           </td>
         </tr>
