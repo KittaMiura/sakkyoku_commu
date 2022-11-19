@@ -1,5 +1,4 @@
 class Users::GroupsController < ApplicationController
-
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update]
 
@@ -58,7 +57,7 @@ class Users::GroupsController < ApplicationController
     redirect_to groups_path
     end
   end
-  
+
   #該当部分のみ
 
   def new_mail
