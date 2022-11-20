@@ -71,3 +71,11 @@ end
 gem "net-pop"
 
 gem "net-imap"
+
+gem 'simple_form'
+
+gem 'bootstrap', '~> 4.5'
+
+gem 'summernote-rails', '~> 0.8.9'
+
+gem 'autoprefixer-rails'

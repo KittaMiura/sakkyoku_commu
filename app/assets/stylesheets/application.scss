@@ -21,11 +21,23 @@ header {
   background: linear-gradient(to bottom right, #b31247, 50%, #660066);
 }
 
+html,body {
+  height: 100%
+}
+
+body {/*擬似要素をつくる*/
+  position: fixed;/*固定配置*/
+  top: 0; left: 0;/*左上に固定*/
+  width: 100%; height: 100%;/*画面全体を覆う*/
+  content: "";
+  background: linear-gradient(to bottom, #bfb8cc 100%, #420ba8);/*正規のプロパティ*/
+  }
+
 footer {
   /*position: sticky;*/
   /*top: 0;*/
   /*z-index: 999;*/
-  height: 77px;
+  height: 100px;
   background: linear-gradient(to bottom right, #b31247, 50%, #660066);
   /*text-align: center;*/
   position: absolute;
