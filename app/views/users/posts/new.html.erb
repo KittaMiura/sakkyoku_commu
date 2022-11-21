@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-12">
+    <div class="col-12 pt-3">
       <h1>投稿フォーム</h1>
 
   <%= form_with model: @post do |f| %>
@@ -9,8 +9,9 @@
     <h4>タイトル</h4>
       <%= f.text_field :title %>
     <h4>説明文</h4>
-      <%= f.text_area :introduction %>
-
+    <div class="rich_area">
+      <%= f.rich_text_area :introduction %>
+    </div>
     <div class="field">
       <%= f.label"タグ (,で区切ると複数タグ登録できます)" %><br>
       <%= f.text_field :name, value: @tag_list %>
