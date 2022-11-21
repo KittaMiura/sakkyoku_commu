@@ -10,12 +10,15 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="body">
-    <%= render 'layouts/header' %>
-    <main>
-      <%= render 'shared/flash_message' %>
-      <%= yield %>
-    </main>
+  <body>
+    <div class="wrapper">
+      <%= render 'layouts/header' %>
+      <main class="pb-5">
+        <%= render 'shared/flash_message' %>
+        <%= yield %>
+      </main>
+    </div>
+    <div class="push"></div>
     <%= render 'layouts/footer' %>
   </body>
 </html>
