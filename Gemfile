@@ -79,3 +79,5 @@ gem 'bootstrap', '~> 4.5'
 gem 'summernote-rails', '~> 0.8.9'
 
 gem 'autoprefixer-rails'
+
+gem 'rails-i18n'
