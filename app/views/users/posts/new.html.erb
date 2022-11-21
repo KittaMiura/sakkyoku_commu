@@ -1,19 +1,22 @@
-<h1>投稿フォーム</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h1>投稿フォーム</h1>
 
-<%= form_with model: @post do |f| %>
+  <%= form_with model: @post do |f| %>
     <h4>画像</h4>
       <%= f.file_field :image, accept: "image/*" %>
     <h4>タイトル</h4>
       <%= f.text_field :title %>
     <h4>説明文</h4>
-      <%= f.text_area :introduction, 'data-provider': :summernote %>
+      <%= f.text_area :introduction %>
 
     <div class="field">
       <%= f.label"タグ (,で区切ると複数タグ登録できます)" %><br>
       <%= f.text_field :name, value: @tag_list %>
     </div>
 
-    <div class="form-group row">
+    <div class="form-group">
       <%=f.label:"公開範囲",class:"col-sm-4"%>
         <div style="padding-right:20px;">
           <%= f.radio_button :status, :true %>
@@ -27,3 +30,6 @@
 
     <%= f.submit '投稿' %>
 <% end %>
+    </div>
+  </div>
+</div>
