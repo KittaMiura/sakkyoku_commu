@@ -1,25 +1,14 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-10 mt-5">
+    <div class="col-md-8 mt-5 mx-auto">
     <% if @post.is_ban? %>
       <h3>この投稿は非公開になっています</h3>
     <% else %>
 
     <div class="post-show">
       <%= image_tag @post.get_image, class: 'post-show-image' %>
-      <h1 class="my-5"><%= @post.title %></h1>
-      <%= @post.introduction %>
-      <p>投稿ユーザー画像：<%= image_tag @post.user.get_profile_image, size: '50x50' %></p>
-      <p>ユーザーネーム：<%= @post.user.user_name %></p>
-      <p>投稿日：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
-
-      <p>タグ：
-        <% @post_tags.each do |tag| %>
-          <%= link_to tag.name,search_tag_path(tag_id: tag.id)%><%="(#{tag.posts.count})" %>
-        <% end %>
-      </p>
-
-        <% if @post.favorited_by?(current_user) %>
+      <h1 class="mt-5 mb-2"><%= @post.title %></h1>
+      <% if @post.favorited_by?(current_user) %>
         <p>
           <%= link_to post_favorites_path(@post), method: :delete do %>
             ♥<%= @post.favorites.count %> いいね
@@ -32,6 +21,30 @@
           <% end %>
         </p>
       <% end %>
+      <div class="row">
+        <div class="col-1">
+          <%= link_to profile_path(@post.user.id), class:"text-dark" do %>
+            <%= image_tag @post.user.get_profile_image, size: '50x50', class: 'mb-5 rounded-circle' %>
+          <% end %>
+        </div>
+        <div class="col-8">
+          <%= link_to profile_path(@post.user.id), class:"text-dark" do %>
+            <%= @post.user.user_name %>
+          <% end %><br>
+          <small><%= @post.created_at.strftime('%Y年%m月%d日') %></small>
+        </div>
+      </div>
+      <%= @post.introduction %>
+      <p></p>
+      <p>投稿日：</p>
+
+      <p>タグ：
+        <% @post_tags.each do |tag| %>
+          <%= link_to tag.name,search_tag_path(tag_id: tag.id)%><%="(#{tag.posts.count})" %>
+        <% end %>
+      </p>
+
+        
     </div>
 
       <div>
