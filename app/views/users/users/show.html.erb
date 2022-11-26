@@ -7,10 +7,10 @@
       <div class='mt-3 text-center'>
         <% if current_user == @user %>
         	<!--会員編集ボタン-->
-        	<%= link_to edit_user_path(@user), class: "col-8 btn btn-outline-secondary btn-block mx-auto" do %>
+        	<%= link_to edit_user_path(@user), class: "col-8 btn btn-outline-dark btn-block mx-auto" do %>
             <i class="fas fa-user-cog"></i> ユーザー編集
           <% end %>
-          <%= link_to groups_path, class: "col-8 btn btn-outline-secondary btn-block mx-auto" do %>
+          <%= link_to groups_path, class: "col-8 btn btn-outline-dark btn-block mx-auto" do %>
             <i class="fas fa-users"></i> グループ一覧
           <% end %>
         <% end %>
@@ -36,7 +36,7 @@
         <div class="pt-3 card-body">
           <div class="row">
             <div class="col-2"><!--投稿ユーザー画像-->
-              <%= image_tag post.user.get_profile_image, size: '50x50', class:"rounded-circle" %>
+              <%= image_tag post.user.get_profile_image, size: '70x70', class:"rounded-circle" %>
             </div>
             <div class="col-10">
               <span><i class="fas fa-user"></i> By <%= post.user.user_name %></span><br>

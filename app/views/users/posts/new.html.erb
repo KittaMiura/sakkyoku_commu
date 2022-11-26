@@ -1,36 +1,41 @@
 <div class="container">
   <div class="row">
+    <% if current_user.user_name == 'ゲスト' %>
+      <div class="col-12 pt-3">
+        <h4>ゲストユーザーは投稿ができません</h4>
+        <%= render 'users/shared/guest' %>
+      </div>
+    <% else %>
     <div class="col-12 pt-3">
       <h1>投稿フォーム</h1>
+        <%= form_with model: @post do |f| %>
+          <h4 class="pt-2">サムネイル画像</h4>
+            <%= f.file_field :image, accept: "image/*" %>
+          <h4 class="pt-2">タイトル</h4>
+            <%= f.text_field :title %>
+          <h4 class="pt-2">説明文</h4>
+          <div class="rich_area">
+            <%= f.rich_text_area :introduction %>
+          </div>
+          <div class="field">
+            <%= f.label"タグ (,で区切ると複数タグ登録できます)" %><br>
+            <%= f.text_field :name, value: @tag_list %>
+          </div>
 
-  <%= form_with model: @post do |f| %>
-    <h4 class="pt-2">サムネイル画像</h4>
-      <%= f.file_field :image, accept: "image/*" %>
-    <h4 class="pt-2">タイトル</h4>
-      <%= f.text_field :title %>
-    <h4 class="pt-2">説明文</h4>
-    <div class="rich_area">
-      <%= f.rich_text_area :introduction %>
+          <div class="form-group">
+            <%=f.label:"公開範囲",class:"col-sm-4"%>
+              <div style="padding-right:20px;">
+                <%= f.radio_button :status, :true %>
+                <%= f.label :status, "公開", {value: :true, style: "display: inline-block;"} %>
+              </div>
+              <div style="padding-right:20px;">
+                <%= f.radio_button :status, :false %>
+                <%= f.label :status, "下書き保存", {value: :false, style: "display: inline-block;"} %>
+              </div>
+          </div>
+          <%= f.submit '投稿' %>
+      <% end %>
     </div>
-    <div class="field">
-      <%= f.label"タグ (,で区切ると複数タグ登録できます)" %><br>
-      <%= f.text_field :name, value: @tag_list %>
-    </div>
-
-    <div class="form-group">
-      <%=f.label:"公開範囲",class:"col-sm-4"%>
-        <div style="padding-right:20px;">
-          <%= f.radio_button :status, :true %>
-          <%= f.label :status, "公開", {value: :true, style: "display: inline-block;"} %>
-        </div>
-        <div style="padding-right:20px;">
-          <%= f.radio_button :status, :false %>
-          <%= f.label :status, "下書き保存", {value: :false, style: "display: inline-block;"} %>
-        </div>
-    </div>
-
-    <%= f.submit '投稿' %>
-<% end %>
-    </div>
+    <% end %>
   </div>
 </div>

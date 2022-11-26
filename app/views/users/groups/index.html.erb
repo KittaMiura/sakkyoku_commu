@@ -1,7 +1,13 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-11 mx-auto mt-5">
-              <h2>Groups</h2>
+      <div class="col-md-2 mx-auto mt-5">
+        <%= link_to new_group_path, class: "btn btn-outline-dark btn-block mx-auto text-nowrap" do %>
+          <i class="fas fa-user-cog"></i> グループ作成
+        <% end %>
+      </div>
+
+        <div class="col-md-10 mx-auto mt-5">
+              <h2>グループ一覧</h2>
               <table class='table table-hover table-inverse'>
                 <thead>
                   <tr>
@@ -34,9 +40,6 @@
                   <% end %>
                 </tbody>
               </table>
-            <%= link_to new_group_path, class: "col-8 btn btn-outline-secondary btn-block mx-auto" do %>
-                <i class="fas fa-user-cog"></i> グループ作成
-            <% end %>
         </div>
     </div>
 </div>
