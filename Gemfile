@@ -84,6 +84,4 @@ gem 'rails-i18n'
 
 gem 'kaminari'
 
-group :production, :staging do
-  gem 'mysql2'
-end
+gem 'mysql2'
