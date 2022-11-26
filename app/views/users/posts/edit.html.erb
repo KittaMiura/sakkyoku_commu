@@ -1,19 +1,23 @@
-<h1>投稿編集フォーム</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-12 pt-3">
+      <h1>投稿編集画面</h1>
 
-<%= form_with model: @post do |f| %>
-    <h4>画像</h4>
+  <%= form_with model: @post do |f| %>
+    <h4 class="pt-2">サムネイル画像</h4>
       <%= f.file_field :image, accept: "image/*" %>
-    <h4>タイトル</h4>
+    <h4 class="pt-2">タイトル</h4>
       <%= f.text_field :title %>
-    <h4>説明文</h4>
-      <%= f.text_area :introduction %>
-
-    <div class="field">
+    <h4 class="pt-2">説明文</h4>
+    <div class="rich_area">
+      <%= f.rich_text_area :introduction %>
+    </div>
+    <div class="field pt-2">
       <%= f.label"タグ (,で区切ると複数タグ登録できます)" %><br>
       <%= f.text_field :name, value: @tag_list %>
     </div>
 
-    <div class="form-group row">
+    <div class="form-group">
       <%=f.label:"公開範囲",class:"col-sm-4"%>
         <div style="padding-right:20px;">
           <%= f.radio_button :status, :true %>
@@ -27,3 +31,6 @@
 
     <%= f.submit '更新' %>
 <% end %>
+    </div>
+  </div>
+</div>

@@ -17,6 +17,8 @@
 @import 'actiontext';
 @import 'trix/dist/trix.css';
 
+// ヘッダーやフッターなどの全体↓
+
 header {
   position: sticky;
   top: 0;
@@ -61,6 +63,9 @@ footer {
   width: 580px;
 }
 
+// ヘッダーやフッターなどの全体↑
+// ホーム画面↓
+
 .sakkyoku_commu {
   text-align: center;
 }
@@ -99,11 +104,17 @@ footer {
   padding-top: 100px;
 }
 
+// ホーム画面↑
+// 新規投稿画面↓
+
 .rich_area {
   background-color: white;
   padding: 10px;
   border-radius: 5px;
 }
+
+// 新規投稿画面↑
+// 投稿詳細画面↓
 
 .post-show {
   background-color: white;
@@ -116,5 +127,11 @@ footer {
    height: 250px;
    object-fit: cover;
  }
- 
- 
+
+ .comment_area {
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+ }
+
+// 投稿詳細画面↑

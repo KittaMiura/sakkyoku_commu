@@ -34,40 +34,51 @@
           <small><%= @post.created_at.strftime('%Y年%m月%d日') %></small>
         </div>
       </div>
-      <%= @post.introduction %>
-      <p></p>
-      <p>投稿日：</p>
 
-      <p>タグ：
+      <p>
+        <%= @post.introduction %>
+      </p>
+
+      <p class="mt-5">タグ：
         <% @post_tags.each do |tag| %>
           <%= link_to tag.name,search_tag_path(tag_id: tag.id)%><%="(#{tag.posts.count})" %>
         <% end %>
       </p>
-
-
     </div>
 
-      <div>
+    <div class="mt-2 mb-4">
+      <% if @post.user == current_user %>
+        <%= link_to "編集", edit_post_path(@post), class: 'btn btn-success' %>
+        <%= link_to "削除", post_path(@post), method: :delete, class: 'btn btn-danger' %>
+      <% end %>
+    </div>
+
+      <div class="comment_area">
         <p>コメント件数：<%= @post.post_comments.count %></p>
-        <% @post.post_comments.each do |post_comment| %>
-          <p><%= image_tag post_comment.user.get_profile_image, size: '50x50' %></p>
-          <%= post_comment.user.user_name %>
-          <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
-          <% if post_comment.user == current_user %>
-            <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete %>
-          <% end %>
-        <% end %>
+        <table>
+          <tbody class='table'>
+            <% @post.post_comments.reverse.each do |post_comment| %>
+              <tr>
+                <td><%= image_tag post_comment.user.get_profile_image, size: '50x50', class: 'rounded-circle' %></td>
+                <td><%= post_comment.user.user_name %></td>
+                <td><%= post_comment.created_at.strftime('%Y/%m/%d') %></td>
+                <td><%= post_comment.comment %></td>
+                <td class='col-2'>
+                  <% if post_comment.user == current_user %>
+                  <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete %>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
       </div>
 
-      <% if @post.user == current_user %>
-        <%= link_to "編集", edit_post_path(@post) %>
-        <%= link_to "削除", post_path(@post), method: :delete %>
-      <% end %>
-
-      <div>
+      <div class="mt-5">
         <%= form_with model: [@post, @post_comment] do |f| %>
-          <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-          <%= f.submit "送信する" %>
+          <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", class: 'col-md-8' %>
+          <%= f.submit "コメントする" %>
         <% end %>
       </div>
 
