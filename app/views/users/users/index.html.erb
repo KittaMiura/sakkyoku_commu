@@ -15,7 +15,7 @@
         <tbody>
           <% @users.each do |user| %>
             <tr>
-              <td><%= image_tag user.get_profile_image, size: '50x50', class:"rounded-circle" %></td>
+              <td><%= image_tag user.get_profile_image, size: '50x50', class: "rounded-circle" %></td>
               <td><%= user.user_name %></td>
               <td><%= user.profile %></td>
               <td>
