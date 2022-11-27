@@ -1,5 +1,11 @@
 <div class="container">
   <div class="row">
+    <div class="col-md-2 mt-5">
+      <%= link_to groups_path, class: "col-8 btn btn-outline-dark btn-block mx-auto" do %>
+        <i class="fas fa-users"></i> グループ一覧
+      <% end %>
+    </div>
+
     <div class="col-sm-12 mt-5">
       <h2>ユーザー一覧</h2>
       <table class='table'>
@@ -52,7 +58,4 @@
       </table>
     </div>
   </div>
-  <%= link_to groups_path, class: "col-8 btn btn-outline-dark btn-block mx-auto" do %>
-    <i class="fas fa-users"></i> グループ一覧
-  <% end %>
 </div>
