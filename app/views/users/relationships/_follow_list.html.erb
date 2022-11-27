@@ -1,17 +1,17 @@
 <% if users.exists? %>
-  <% users.each do |user| %>
     <table class='table'>
       <thead>
         <tr>
-          <th>image</th>
-          <th>name</th>
-          <th>profile</th>
+          <th>ユーザー画像</th>
+          <th>ユーザー名</th>
+          <th>プロフィール</th>
           <th>フォロー数</th>
           <th>フォロワー数</th>
           <th></th>
         </tr>
       </thead>
       <tbody>
+        <% users.each do |user| %>
         <tr>
           <td><%= image_tag user.get_profile_image, size: '50x50', class: "rounded-circle" %></td>
           <td><%= link_to profile_path(user) do %><%= user.user_name %><% end %></td>
@@ -42,9 +42,9 @@
               <% if user.user_name == 'ゲスト' %>
                 ゲストユーザーです<br>
               <% end %>
-            <% end %>
           </td>
         </tr>
+        <% end %>
       </tbody>
     </table>
   <% end %>
