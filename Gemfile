@@ -84,5 +84,3 @@ gem 'autoprefixer-rails'
 gem 'rails-i18n'
 
 gem 'kaminari'
-
-gem 'listen'
