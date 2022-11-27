@@ -1,5 +1,6 @@
 class Users::UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_user, only: [:favorites]
   before_action :ensure_guest_user, only: [:edit]
 
   def index
@@ -47,7 +48,7 @@ class Users::UsersController < ApplicationController
 
   def favorites
     @user = User.find(params[:id])
-    favorites= Favorite.where(user_id: @user.id).pluck(:post_id)
+    favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
     @favorite_posts = Post.find(favorites)
   end
 
@@ -55,6 +56,10 @@ class Users::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:user_name, :profile, :profile_image)
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 
   def ensure_guest_user

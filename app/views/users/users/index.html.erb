@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-2 mt-5">
-      <%= link_to groups_path, class: "col-8 btn btn-outline-dark btn-block mx-auto text-nowrap" do %>
+      <%= link_to groups_path, class: "btn btn-outline-dark btn-block text-nowrap" do %>
         <i class="fas fa-users"></i> グループ一覧
       <% end %>
     </div>
@@ -15,19 +15,21 @@
             <th>name</th>
             <th>profile</th>
             <th></th>
-            <th colspan="3"></th>
           </tr>
         </thead>
         <tbody>
           <% @users.each do |user| %>
             <tr>
-              <td><%= image_tag user.get_profile_image, size: '50x50', class: "rounded-circle" %></td>
-              <td><%= user.user_name %></td>
+              <td>
+                <%= link_to profile_path(user), class: "text-dark" do %>
+                  <%= image_tag user.get_profile_image, size: '50x50', class: "rounded-circle" %>
+                <% end %>
+              </td>
+              <td><%= link_to profile_path(user), class: "text-dark" do %><%= user.user_name %><% end %></td>
               <td><%= user.profile %></td>
               <td>
                 <% if current_user.user_name== 'ゲスト'%>
                   <% unless user == current_user or user.user_name == 'ゲスト' %>
-
                   <% end %>
                   <% if user == current_user %>
                     あなたのアカウントです<br>
@@ -51,7 +53,6 @@
                   <% end %>
                 <% end %>
               </td>
-              <td><%= link_to '詳細', profile_path(user) %></td>
             </tr>
           <% end %>
         </tbody>
