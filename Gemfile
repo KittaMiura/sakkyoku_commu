@@ -85,6 +85,4 @@ gem 'rails-i18n'
 
 gem 'kaminari'
 
-group :development do
-  gem 'listen'
-end
+gem 'listen'
