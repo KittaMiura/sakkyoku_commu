@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   private
 
-  #ログイン後はトップページへ飛びます↓
+  #ログイン後は投稿一覧へ飛びます↓
   def after_sign_in_path_for(resource)
     posts_path
   end
@@ -14,7 +14,11 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_up_path_for(resource)
-    posts_path
+    profile_path
+  end
+
+  def after_inactive_sign_up_path_for(resource)
+    profile_path
   end
 
   def configure_permitted_parameters

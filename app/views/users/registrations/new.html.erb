@@ -6,8 +6,8 @@
       <form class="form-signin">
                 <span id="reauth-email" class="reauth-email"></span>
                 <!--<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>-->
-                <%= f.text_field :user_name,:placeholder => "ユーザー名", class: "form-control" %>
-                <%= f.email_field :email, autofocus: true, :placeholder => "sample@example.com", class: "form-control mt-3" %>
+                <%= f.text_field :user_name, autofocus: true,:placeholder => "ユーザー名", class: "form-control" %>
+                <%= f.email_field :email, :placeholder => "sample@example.com", class: "form-control mt-3" %>
                 <%= f.password_field :password, :placeholder => "password", autocomplete: "new-password", class: "form-control mt-3" %>
                 <%= f.password_field :password_confirmation, :placeholder => "もう一度passwordをご入力下さい", autocomplete: "new-password", class: "form-control mt-3" %>
                 <div id="remember" class="checkbox">

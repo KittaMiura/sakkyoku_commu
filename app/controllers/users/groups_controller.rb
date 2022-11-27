@@ -8,6 +8,7 @@ class Users::GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   def join
@@ -39,7 +40,7 @@ class Users::GroupsController < ApplicationController
   def update
     @group=Group.find(params[:id])
     if @group.update(group_params)
-      redirect_to groups_path
+      redirect_to group_path(@group.id)
     else
       render "edit"
     end
@@ -59,8 +60,6 @@ class Users::GroupsController < ApplicationController
     end
   end
 
-  #該当部分のみ
-
   def new_mail
     @group = Group.find(params[:group_id])
   end
@@ -70,7 +69,7 @@ class Users::GroupsController < ApplicationController
     group_users = @group.users
     @mail_title = params[:mail_title]
     @mail_content = params[:mail_content]
-    ContactMailer.send_mail(@mail_title, @mail_content,group_users).deliver
+    ContactMailer.send_mail(@mail_title, @mail_content, group_users).deliver
   end
 
   private
