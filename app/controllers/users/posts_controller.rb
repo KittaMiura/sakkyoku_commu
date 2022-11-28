@@ -71,7 +71,7 @@ class Users::PostsController < ApplicationController
     #検索結果画面でもタグ一覧表示
     @tag_list=Tag.all
     @tag=Tag.find(params[:tag_id])
-    @posts=@tag.posts.page(params[:page]).per(10)
+    @posts=@tag.posts.page(params[:page]).per(8)
   end
 
   private

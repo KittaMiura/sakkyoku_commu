@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
 
   has_one_attached :image
-  has_rich_text :intr
+  has_rich_text :introduction
 
   belongs_to :user
   has_many :post_comments, dependent: :destroy

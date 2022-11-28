@@ -1,0 +1,13 @@
+<div class="col-2 mt-5">
+  <div class="ml-5 pl-5">
+    <h4>タグ一覧</h4>
+    <ul class="list-group">
+      <% @tag_list.each do |list|%>
+        <li class="list-group-item">
+          <%=link_to list.name,search_tag_path(tag_id: list.id) %>
+          <%="(#{list.posts.count})" %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
