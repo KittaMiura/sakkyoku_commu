@@ -54,8 +54,10 @@
         </tbody>
       </table>
     </div>
+    <div class='mx-auto pt-5'>
+      <%= paginate @users %>
+    </div>
   </div>
-</div>
   <% else %>
     <!--検索対象モデルがUserではない時(= 検索対象モデルがBookの時) -->
     <div class="card-deck">
@@ -77,9 +79,9 @@
     		</div>
       <% end %>
   	</div>
-    	<div class='mx-auto pt-5'>
-        <%= paginate @posts %>
-      </div>
+  </div>
+  <div class='mx-auto pt-5'>
+    <%= paginate @posts %>
   </div>
   <% end %>
-</table>
+</div>
