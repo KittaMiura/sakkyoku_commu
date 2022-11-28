@@ -2,6 +2,8 @@
   <div class="row">
     <div class="col-sm-12 mt-5">
       <h2>検索結果</h2>
+      <!--検索対象モデルがUserの時 -->
+      <% if @range == "User" %>
       <table class='table'>
         <thead>
           <tr>
@@ -54,23 +56,6 @@
     </div>
   </div>
 </div>
-
-<table>
-  <!--検索対象モデルがUserの時 -->
-  <% if @range == "User" %>
-    <tbody>
-      <% @users.each do |user| %>
-        <tr>
-          <td><%= user.user_name %></td>
-        </tr>
-      <% end %>
-    </tbody>
-
-
-
-
-
-
   <% else %>
     <!--検索対象モデルがUserではない時(= 検索対象モデルがBookの時) -->
     <tbody>
