@@ -4,7 +4,7 @@ class Users::SearchesController < ApplicationController
 
     @range = params[:range]
 
-    if @range == "User"
+    if @range == "会員"
       @users = User.looks(params[:word]).page(params[:page]).per(8).order(id: "DESC")
     else
       @posts = Post.search(params[:word]).page(params[:page]).per(8).order(id: "DESC")
