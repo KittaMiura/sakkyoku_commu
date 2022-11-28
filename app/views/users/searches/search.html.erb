@@ -4,6 +4,7 @@
       <h2>検索結果</h2>
       <!--検索対象モデルがUserの時 -->
       <% if @range == "User" %>
+
       <table class='table'>
         <thead>
           <tr>
@@ -58,8 +59,9 @@
       <%= paginate @users %>
     </div>
   </div>
+
   <% else %>
-    <!--検索対象モデルがUserではない時(= 検索対象モデルがBookの時) -->
+    <!--検索対象モデルがUserではない時(= 検索対象モデルがPostの時) -->
     <div class="card-deck">
   	<div class="row col-12">
       <% @posts.each do |post| %>
@@ -79,9 +81,9 @@
     		</div>
       <% end %>
   	</div>
-  </div>
-  <div class='mx-auto pt-5'>
+  	<div class='mx-auto pt-5'>
     <%= paginate @posts %>
+  </div>
   </div>
   <% end %>
 </div>

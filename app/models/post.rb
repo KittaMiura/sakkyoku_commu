@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
 
   has_one_attached :image
-  has_rich_text :introduction
+  has_rich_text :intr
 
   belongs_to :user
   has_many :post_comments, dependent: :destroy
@@ -41,14 +41,8 @@ class Post < ApplicationRecord
   end
 
   # 検索方法分岐
-  def self.looks(search, word)
-    if search == "perfect_match"
-      @post = Post.where("title LIKE?","#{word}")
-    elsif search == "forward_match"
-      @post = Post.where("title LIKE?","#{word}%")
-    elsif search == "backward_match"
-      @post = Post.where("title LIKE?","%#{word}")
-    elsif search == "partial_match"
+  def self.search(word)
+    if word
       @post = Post.where("title LIKE?","%#{word}%")
     else
       @post = Post.all
