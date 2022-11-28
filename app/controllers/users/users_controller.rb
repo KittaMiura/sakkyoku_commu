@@ -39,7 +39,7 @@ class Users::UsersController < ApplicationController
     @user = current_user
   end
 
-  def withdraw
+  def withdrawal
     @user = current_user
     @user.update(is_deleted: true)
     reset_session

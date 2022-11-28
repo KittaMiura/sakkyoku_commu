@@ -1,5 +1,4 @@
 <div class='container'>
-  <%= flash[:notice] %>
   <div class='row'>
     <div class='col-6'>
       <div class="d-flex bd-highlight mb-3 mt-3 ">
@@ -29,7 +28,7 @@
 
         <tr>
           <td>ステータス</td>
-           <% if @user.is_deleted? %>
+           <% if @user.is_deleted == true %>
               <td class="text-black-50">退会</td>
            <% else %>
               <td class="text-success">有効</td>

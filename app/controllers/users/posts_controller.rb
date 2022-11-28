@@ -17,12 +17,20 @@ class Users::PostsController < ApplicationController
     @post.user_id=current_user.id
     # 受け取った値を,で区切って配列にする
     tag_list=params[:post][:name].delete(' ').delete('　').split(',')
-    if @post.save
-      @post.save_post(tag_list)
-      redirect_to post_path(@post),notice:'投稿完了しました。'
+    if params[:post]
+      if @post.save
+        @post.save_post(tag_list)
+        redirect_to post_path(@post),notice:'投稿完了しました。'
+      else
+        notice:'投稿に失敗しました。'
+      end
     else
-      notice:'投稿に失敗しました。'
-      render:new
+      if @post.update(status: true)
+        redirect_to user_path(current_user), notice: "下書き保存しました。"
+      else
+        notice:'投稿に失敗しました。'
+        render:new
+      end
     end
   end
 

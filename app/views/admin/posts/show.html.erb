@@ -1,44 +1,68 @@
-<h1>投稿詳細</h1>
-
-<% if @post.is_ban %>
-  <h3>この投稿は非公開になっています</h3>
-<% end %>
-
-<div>
-  <%= image_tag @post.get_image, size: '260x200' %>
-  <p>ショップ名：<%= @post.title %></p>
-  <p>説明：<%= @post.introduction %></p>
-  <p>投稿ユーザー画像：<%= image_tag @post.user.get_profile_image, size: '50x50' %></p>
-  <p>ユーザーネーム：<%= @post.user.user_name %></p>
-  <p>投稿日：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
-
-  <p>タグ：
-    <% @post_tags.each do |tag| %>
-      <%= link_to tag.name,search_tag_path(tag_id: tag.id)%><%="(#{tag.posts.count})" %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 mt-5 mx-auto">
+    <% if @post.is_ban? %>
+      <h3>この投稿は管理者により非公開になっています</h3>
     <% end %>
-  </p>
 
-  <div>
-    <p>コメント件数：<%= @post.post_comments.count %></p>
-    <% @post.post_comments.each do |post_comment| %>
-      <p><%= image_tag post_comment.user.get_profile_image, size: '50x50' %></p>
-      <%= post_comment.user.user_name %>
-      <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
-      <% if post_comment.user == current_user %>
-        <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete %>
-      <% end %>
-      <% if current_admin %>
-        [[ここにコメント非公開機能を実装予定]]
-      <% end %>
-    <% end %>
+    <div class="post-show">
+      <%= image_tag @post.get_image, class: 'post-show-image' %>
+      <h1 class="mt-5 mb-2"><%= @post.title %></h1>
+
+          <p>
+              ♡<%= @post.favorites.count %> いいね
+          </p>
+
+      <div class="row">
+        <div class="col-1">
+          <%= link_to profile_path(@post.user.id), class:"text-dark" do %>
+            <%= image_tag @post.user.get_profile_image, size: '50x50', class: 'mb-5 rounded-circle' %>
+          <% end %>
+        </div>
+        <div class="col-8">
+          <%= link_to profile_path(@post.user.id), class:"text-dark" do %>
+            <%= @post.user.user_name %>
+          <% end %><br>
+          <small><%= l @post.created_at %></small>
+        </div>
+      </div>
+
+      <p>
+        <%= @post.introduction %>
+      </p>
+
+      <p class="mt-5">タグ：
+        <% @post_tags.each do |tag| %>
+          <%= link_to tag.name,search_tag_path(tag_id: tag.id)%><%="(#{tag.posts.count})" %>
+        <% end %>
+      </p>
+    </div>
+
+    <div class="mt-2 mb-4">
+        <%= link_to "非公開設定", edit_admin_post_path(@post), class: 'btn btn-danger' %>
+    </div>
+
+      <div class="comment_area">
+        <h4>コメント一覧</h4>
+        <p>件数：<%= @post.post_comments.count %></p>
+        <table>
+          <tbody class='table'>
+            <% @post.post_comments.each do |post_comment| %>
+              <tr>
+                <td><%= image_tag post_comment.user.get_profile_image, size: '50x50', class: 'rounded-circle' %></td>
+                <td><%= post_comment.user.user_name %></td>
+                <td><small><%= l post_comment.created_at %></small></td>
+                <td><%= post_comment.comment %></td>
+                <td class='col-2'>
+                  <% if post_comment.user == current_user %>
+                  <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete %>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
-
-  <% if @post.user == current_user %>
-    <%= link_to "編集", edit_post_path(@post) %>
-    <%= link_to "削除", post_path(@post), method: :delete %>
-  <% end %>
-
-  <% if current_admin %>
-    <%= link_to "非公開設定", edit_admin_post_path(@post) %>
-  <% end %>
-
+</div>

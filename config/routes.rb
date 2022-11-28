@@ -42,6 +42,8 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :edit, :update]
     resources :tags, only: [:index, :create, :edit, :update]
     resources :posts, only: [:index, :show, :edit, :update]
+    get "search_tag"=>"posts#search_tag"
+    get "search" => "searches#search"
   end
 
   # 管理者用

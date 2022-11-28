@@ -2,9 +2,9 @@
   <div class="row">
     <div class="col-sm-12 mt-5">
       <h2>検索結果</h2>
-      <!--検索対象モデルがUserの時管理者 -->
+      <!--検索対象モデルがUserの時 -->
       <% if current_admin %>
-      現在は管理者でログイン中です。
+      管理者です
       <% if @range == "会員" %>
             <table class='table'>
               <thead>
@@ -37,7 +37,7 @@
         </div>
 
         <% else %>
-          <!--検索対象モデルがUserではない時(= 検索対象モデルがPostの時)管理者 -->
+          <!--検索対象モデルがUserではない時(= 検索対象モデルがPostの時) -->
           <div class="card-deck">
         	<div class="row col-12">
             <% @posts.each do |post| %>
@@ -47,7 +47,7 @@
                   <%= image_tag post.get_image, size: '180', class:"card-img-top"; %>
                   <% end %>
           				<div class="card-body">
-          					<h4 class="card-title"><%= link_to admin_post_path(post.id), class:"text-dark" do %><strong><%= post.title %></span></strong><% end %></h4>
+          					<h4 class="card-title"><%= link_to post_path(post.id), class:"text-dark" do %><strong><%= post.title %></span></strong><% end %></h4>
           					<%= link_to admin_user_path(post.user.id), class:"text-dark" do %>
                       <%= image_tag post.user.get_profile_image, size: '40x40', class:"rounded-circle" %>
                         <span><%= post.user.user_name %></span><br>
@@ -127,12 +127,14 @@
             <% @posts.each do |post| %>
           		<div class="col-sm-3 py-3">
           			<div class="card h-100">
-          				<%= link_to post_path(post.id) do %>
+          				<%= link_to admin_post_path(post.id) do %>
                   <%= image_tag post.get_image, size: '180', class:"card-img-top"; %>
                   <% end %>
           				<div class="card-body">
-          					<h4 class="card-title"><%= link_to post_path(post.id), class:"text-dark" do %><strong><%= post.title %></span></strong><% end %></h4>
-          					<%= link_to profile_path(post.user.id), class:"text-dark" do %>
+          				  <%= link_to admin_posts_path, class:"text-dark" do %>
+          					
+          					<% end %>
+          					<%= link_to admin_user_path(post.user.id), class:"text-dark" do %>
                       <%= image_tag post.user.get_profile_image, size: '40x40', class:"rounded-circle" %>
                         <span><%= post.user.user_name %></span><br>
                     <% end %>
