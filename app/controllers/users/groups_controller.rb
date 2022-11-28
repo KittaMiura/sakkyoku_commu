@@ -19,7 +19,6 @@ class Users::GroupsController < ApplicationController
 
   def new
     @group = Group.new
-    @user = current_user
   end
 
   def create

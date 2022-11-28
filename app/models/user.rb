@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  validates :user_name, uniqueness: { message: 'このnameは既に使われています' }
+
 
   has_many :posts, dependent: :destroy
   has_many :post_comments, dependent: :destroy

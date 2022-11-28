@@ -3,6 +3,9 @@ class Post < ApplicationRecord
   has_one_attached :image
   has_rich_text :introduction
 
+  validates :title, presence: true
+  validates :introduction, presence: true
+
   belongs_to :user
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy

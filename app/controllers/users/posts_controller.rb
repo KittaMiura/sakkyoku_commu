@@ -20,16 +20,15 @@ class Users::PostsController < ApplicationController
     if params[:post]
       if @post.save
         @post.save_post(tag_list)
-        redirect_to post_path(@post),notice:'投稿完了しました。'
+        redirect_to post_path(@post),notice: '投稿完了しました。'
       else
-        notice:'投稿に失敗しました。'
+        render:new,notice: '投稿に失敗しました。'
       end
     else
       if @post.update(status: true)
         redirect_to user_path(current_user), notice: "下書き保存しました。"
       else
-        notice:'投稿に失敗しました。'
-        render:new
+        render:new, notice: '投稿に失敗しました。'
       end
     end
   end

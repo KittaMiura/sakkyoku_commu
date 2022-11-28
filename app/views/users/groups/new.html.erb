@@ -1,4 +1,4 @@
-<% if @user.user_name == 'ゲスト' %>
+<% if current_user.user_name == 'ゲスト' %>
 <div class="container pt-5">
   <div class="row">
     <h4>ゲストユーザーはグループ作成ができません</h4>
