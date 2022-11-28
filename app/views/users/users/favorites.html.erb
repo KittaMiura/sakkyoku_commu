@@ -28,8 +28,7 @@
       <div class="card-list-container py-3">
         <h2 class="ml-5"><%= @user.user_name %>さんがいいねした投稿一覧</h2>
         <% if current_user.user_name == 'ゲスト' %>
-          ゲストユーザーはいいねできません。
-          <%= render 'users/shared/guest' %>
+          <h2>ゲストユーザーはいいねできません</h2>
         <% end %>
         <% @favorite_posts.each do |post|%>
           <div class="card w-100 mx-auto mt-4 shadow-lg">
