@@ -9,6 +9,6 @@
 #管理者追加用の記述。emailとパスワードを書き換えてrails db:seedすると登録
 
  Admin.create!(
-     email: '1@1.com',
-     password: 'km881888',
+     email: ENV['ADMIN_KEY'],
+     password: ENV['ADMIN_PASSWORD'],
  )
