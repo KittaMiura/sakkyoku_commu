@@ -1,4 +1,59 @@
-<h2>検索結果</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 mt-5">
+      <h2>検索結果</h2>
+      <table class='table'>
+        <thead>
+          <tr>
+            <th>image</th>
+            <th>name</th>
+            <th>profile</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td>
+                <%= link_to profile_path(user), class: "text-dark" do %>
+                  <%= image_tag user.get_profile_image, size: '50x50', class: "rounded-circle" %>
+                <% end %>
+              </td>
+              <td><%= link_to profile_path(user), class: "text-dark" do %><%= user.user_name %><% end %></td>
+              <td><%= user.profile %></td>
+              <td>
+                <% if current_user.user_name== 'ゲスト'%>
+                  <% unless user == current_user or user.user_name == 'ゲスト' %>
+                  <% end %>
+                  <% if user == current_user %>
+                    あなたのアカウントです<br>
+                  <% end %>
+                  <% if user.user_name == 'ゲスト' %>
+                    ゲストユーザーです<br>
+                  <% end %>
+                <% else %>
+                  <% unless user == current_user or user.user_name == 'ゲスト' %>
+                    <% if current_user.following?(user) %>
+                      <%= link_to 'フォロー外す', user_relationships_path(user.id), method: :delete, class: "btn btn-danger" %>
+                    <% else %>
+                      <%= link_to 'フォローする', user_relationships_path(user.id), method: :POST, class: "btn btn-info" %>
+                    <% end %>
+                  <% end %>
+                  <% if user == current_user %>
+                    あなたのアカウントです<br>
+                  <% end %>
+                  <% if user.user_name == 'ゲスト' %>
+                    ゲストユーザーです<br>
+                  <% end %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
 <table>
   <!--検索対象モデルがUserの時 -->
@@ -10,6 +65,12 @@
         </tr>
       <% end %>
     </tbody>
+
+
+
+
+
+
   <% else %>
     <!--検索対象モデルがUserではない時(= 検索対象モデルがBookの時) -->
     <tbody>
