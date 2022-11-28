@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row">
 
-      <div class='col-md-3 mt-3'>
-        <%= render 'info', user: @user %>
-      </div>
+      <!--<div class='col-md-3 mt-3'>-->
+      <!--  <%#= render 'info', user: @user %>-->
+      <!--</div>-->
 
-      <div class='col-md-9 mt-3'>
+      <div class='col-md-12 mt-3'>
         <h1>ユーザー情報編集</h1>
         <%= form_with model: @user, local:true do |f| %>
         <table class="table col-md-8 mt-5">
@@ -32,10 +32,10 @@
         <div>
           <%= f.submit class: "btn btn-success" %>
         </div>
-      <% end %>
-      </div>
-      <div class="mx-auto">
+        <div class="mx-auto mt-1">
           <%= link_to "退会", unsubscribe_path, class: "btn btn-danger" %>
+        </div>
+      <% end %>
       </div>
   </div>
 </div>

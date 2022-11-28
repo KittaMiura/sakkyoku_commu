@@ -2,7 +2,7 @@ class Admin::PostsController < ApplicationController
 
   def index
                                                              # ↓投稿を新しい順にしている
-    @posts = Post.where(status: :true).page(params[:page]).order(id: "DESC")
+    @posts = Post.where(status: :true).page(params[:page]).per(8).order(id: "DESC")
     @tag_list=Tag.all
   end
 
