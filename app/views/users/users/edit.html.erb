@@ -7,8 +7,8 @@
 
       <div class='col-md-9 mt-3'>
         <h1>ユーザー情報編集</h1>
+        <%= form_with model: @user, local:true do |f| %>
         <table class="table col-md-8 mt-5">
-          <%= form_with model: @user, local:true do |f| %>
           <tbody>
             <tr>
               <th><%= f.label :image %></th>
@@ -27,8 +27,11 @@
               <td></td>
             </tr>
           </tbody>
+
         </table>
-        <%= f.submit class: "btn btn-success" %>
+        <div>
+          <%= f.submit class: "btn btn-success" %>
+        </div>
       <% end %>
       </div>
       <div class="mx-auto">
