@@ -1,5 +1,10 @@
 <div class='container px-5 px-sm-0'>
   <div class='row'>
+    <% if @user.is_deleted == true %>
+      <div class='col-md-9 my-5'>
+        <h1>こちらのユーザーは退会しています。</h1>
+      </div>
+    <% else %>
     <div class='col-md-3 mt-3'>
 
       <%= render 'info', user: @user %>
@@ -70,3 +75,6 @@
   <div class='mx-auto pt-5'>
     <%= paginate @posts %>
   </div>
+  <% end %>
+  </div>
+</div>
