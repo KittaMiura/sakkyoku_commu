@@ -45,3 +45,9 @@ Post.create!(
     {title: '作曲関連のオススメのサイト', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/post5.jpg"), filename:"post5.jpg"), introduction: '作曲、DTM関連のオススメのサイトを見つけたので、こちらで紹介します！<br><br><a href="https://dtmbu.com/"><strong>「DTM部」</strong></a><br>こちらのサイトはDTMに関連した情報をまとめているサイトです。<br>作曲についてのテクニックだけでなく、機材についての情報もまとめています。<br><br><a href="https://www.superdtmnews.com/"><strong>「超DTM速報」</strong></a><strong><br></strong>こちらのサイトはDTMに関する最新の情報をメインに更新しているサイトです。<br>機材のことについてだけでなくイベントに関しての情報もまとめています。<br><br><a href="https://sleepfreaks-dtm.com/category/sale/"><strong>「sleepfreaks DTMセール情報」</strong></a><strong><br></strong>こちらではDTMで使用するVSTプラグインのセール情報をまとめています。<br>セールが何日までかの情報も掲載されており、プラグインをよく使う人にはオススメのサイトです。<br><br>以上になりますが、もしこのサイト以外にもオススメのサイトがあれば、コメントで是非教えてください！', user_id: users[1].id },
   ]
 )
+
+Group.create!(
+  [
+    {name: 'バンド音楽ファングループ', group_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/group1.jpg"), filename:"group1.jpg"), introduction: "バンド音楽が好きな人のグループです！\r\n是非バンドについて語り合いましょう", status: "誰でもOK！", owner_id: users[0].id, user_id: users[0].id, index_groups_on_user_id: users[0].id},
+  ]
+)

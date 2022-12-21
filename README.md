@@ -53,7 +53,7 @@
 
 
 ## 開発環境
-- OS：Windows 10 Home
+- OS：Amazon Linux 2
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
