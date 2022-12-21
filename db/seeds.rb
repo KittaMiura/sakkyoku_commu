@@ -8,18 +8,6 @@
 
 #管理者追加用の記述。emailとパスワードを書き換えてrails db:seedすると登録
 
-table_names = %w()
-
-table_names.each do |table_name|
-  environment = (Rails.env == "test") ? "development" : Rails.env
-
-  path = Rails.root.join("db/seeds", environment, table_name + ".rb")
-  if File.exist?(path)
-    puts "#{table_name}..."
-    require path
-  end
-end
-
  Admin.create!(
      email: ENV['ADMIN_KEY'],
      password: ENV['ADMIN_PASSWORD'],
